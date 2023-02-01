@@ -13,10 +13,8 @@ int main(){
 	    int n = s.length(), m = t.length();
 	    int dp[n][m];
 	    memset(dp, 0, sizeof(dp));
-	    for(int i = 0; i < n; i++)
-	    {
-	    	for(int j = 0; j < m; j++)
-	    	{
+	    for(int i = 0; i < n; i++){
+	    	for(int j = 0; j < m; j++){
 	    		if(i == 0 || j == 0)
 	    			dp[i][j] = 0;
 	    		else if(s[i] == t[j])
