@@ -2,7 +2,9 @@
 using namespace std;
 
 #define quick() ios_base::sync_with_stdio(false); cin.tie(0);
+#define pb push_back
 using ll = long long;
+int mod = 1e9 + 7;
 
 bool check(int a[], int n){
     int cnt = 0;
@@ -25,6 +27,7 @@ void next(int a[], int n){
 }
 
 int main(){
+    quick();
     int test; cin >> test;
     while(test--){
         string s; cin >> s;
@@ -39,3 +42,7 @@ int main(){
         }
     }
 }
+
+/*
+
+*/
