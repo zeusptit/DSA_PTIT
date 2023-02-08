@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define quick() ios_base::sync_with_stdio(false); cin.tie(0);
+using ll = long long;
+int mod = 1e9 + 7;
+
+#define N 1000000
+int P[N];
+void init(){
+	for(int i = 2; i <= N; i++)P[i] = 1;
+	for(int i = 2; i * i <= N; i++){
+		if(P[i])
+		for(int j = i * 2; j <= N; j += i){
+			P[j] = 0;
+		}
+	}
+}
+
+int main(){
+	int test; cin >> test;
+	init();
+	while(test--){
+		int n; cin >> n;
+		int kt = 0;
+		for(int i = 2; i <= n / 2; i++){
+			if(P[i] && P[n - i]){
+				cout << i << ' ' << n - i << endl;
+				kt = 1;
+				break;
+			}
+		}
+		if(!kt)cout << -1 << endl;
+	}
+}
+
+
+
