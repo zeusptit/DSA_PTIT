@@ -50,8 +50,7 @@ void order(Tree root1, Tree root2){
     order(root1 -> right, root2 -> right);
 }
 
-int main()
-{
+int main(){
     quick();
     int test, n, par, child, ori;
     char c;

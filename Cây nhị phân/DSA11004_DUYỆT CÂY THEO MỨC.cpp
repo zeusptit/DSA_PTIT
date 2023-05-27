@@ -52,8 +52,7 @@ void levelOrder(Tree root){
 int main(){
     quick();
     int test, n; cin >> test;
-    while(test--)
-    {
+    while(test--){
         cin >> n;
         Tree root = NULL;
         int par, child;

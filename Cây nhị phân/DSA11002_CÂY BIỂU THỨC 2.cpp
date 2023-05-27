@@ -45,8 +45,7 @@ ll solve(Tree root){
         return solve(root -> left) / solve(root -> right);
 }
 
-int main()
-{
+int main(){
     quick();
     int test; cin >> test;
     string s;

@@ -55,8 +55,7 @@ void postOrder(Tree root){
     cout << root -> val << ' ';
 }
 
-int main()
-{
+int main(){
     quick();
     int test, n;
     cin >> test;

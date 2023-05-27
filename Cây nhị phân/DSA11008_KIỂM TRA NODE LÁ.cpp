@@ -13,15 +13,14 @@ struct Node{
 
 typedef Node* Tree;
 
-inline Tree createNode(int x){
+Tree createNode(int x){
     Tree res = new Node;
     res -> val = x;
     res -> left = res -> right = NULL;
     return res;
 }
 
-void buildTree(Tree &A, char c, int par, int child)
-{
+void buildTree(Tree &A, char c, int par, int child){
     if(A != NULL)
     {
         if(A -> val == par)

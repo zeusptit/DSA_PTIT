@@ -28,8 +28,7 @@ void out(Tree x){
     }
 }
 
-int main()
-{
+int main(){
     quick();
     int test; cin >> test;
     string s;
