@@ -6,6 +6,7 @@ using namespace std;
 using ll = long long;
 int mod = 1e9 + 7;
 
+vector<pair<char, char>> v;
 void trans(int n, char a, char c){
     v.push_back({a, c});
 }
