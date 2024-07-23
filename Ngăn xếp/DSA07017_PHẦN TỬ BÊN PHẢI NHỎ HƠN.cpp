@@ -1,66 +1,64 @@
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 using namespace std;
-
 #define quick() ios_base::sync_with_stdio(false); cin.tie(0);
-#define pb push_back
+#define el '\n'
+ 
 using ll = long long;
-int mod = 1e9 + 7;
+const int mod = 1e9 + 7;
+const int maxN = 1e5;
+ 
+ll test = 1, n, k;
 
+void greaterRight(vector<int> v, int n, vector<int>& g){
+	stack<int> st;
+	st.push(n - 1);
+	for(int i = n - 2; ~i; i--){
+		if(!st.empty() and v[i] < v[st.top()]){
+			g[i] = st.top();
+			st.push(i);
+		}else{
+			while(!st.empty() and v[i] >= v[st.top()])st.pop();
+			if(st.size())g[i] = st.top();
+			else g[i] = -1;
+			st.push(i);
+		}
+	}
+
+}
+
+void smallerRight(vector<int> v, int n, vector<int>& s){
+	stack<int> st;
+	st.push(n - 1);
+	for(int i = n - 2; ~i; i--){
+		if(!st.empty() and v[i] > v[st.top()]){
+			s[i] = st.top();
+			st.push(i);
+		}else{
+			while(!st.empty() and v[i] <= v[st.top()])st.pop();
+			if(st.size())s[i] = st.top();
+			else s[i] = -1;
+			st.push(i);
+		}
+	}
+}
+ 
+void solve(){
+    cin >> n;
+    vector<int> v(n), s(n, 0), g(n, 0);
+    for(int &x : v)cin >> x;
+    g[n - 1] = -1, s[n - 1] = -1;
+    greaterRight(v, n, g);
+	smallerRight(v, n, s);
+	for(int i = 0; i < n; i++){
+		cout << ((g[i] != -1 and s[g[i]] != -1) ? v[s[g[i]]] : -1) << ' ';
+	}
+	cout << el;
+}
+ 
 int main(){
     quick();
-    int test; cin >> test;
+    cin >> test;
     while(test--){
-        int n; cin >> n;
-        vector<int> a(n), b(n, 1);
-        for(int i = 0; i < n; i++)cin >> a[i];
-        vector<int> res1, res2;
-        res1.pb(-1);
-        res2.pb(-1);
-        for(int i = n - 1; i >= 0; i--){
-            b[i] = 1;
-            for(int j = i + 1; j < n;){
-                if(a[j] >= a[i]){
-                    b[i] += b[j];
-                    j += b[j];
-                    if(j >= n){
-                        res1.pb(-1);
-                        break;
-                    }
-                }
-                else{
-                    res1.pb(a[j]);
-                    break;
-                }
-            }
-        }
-        for(int i = n - 1; i >= 0; i--){
-            b[i] = 1;
-            for(int j = i + 1; j < n;){
-                if(a[j] <= a[i]){
-                    b[i] += b[j];
-                    j += b[j];
-                    if(j >= n){
-                        res2.pb(-1);
-                        break;
-                    }
-                }
-                else{
-                    res2.pb(j);
-                    break;
-                }
-            }
-        }
-        reverse(res1.begin(), res1.end());
-        reverse(res2.begin(), res2.end());
-        for(auto x : res2){
-            if(x == -1 || res1[x] == -1)
-                cout << -1 << ' ';
-            else
-                cout << res1[x] << ' ';
-        }
-        cout << endl;
+        solve();
     }
 }
-/*
-
-*/
